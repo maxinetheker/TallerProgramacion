@@ -1,6 +1,8 @@
+import TextInput from '@/Components/TextInput';
 import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
-import { forwardRef } from 'react';
+import { Input } from 'postcss';
+import { forwardRef, useRef } from 'react';
 
 const ModalFormulario = forwardRef((props, ref) => {
     const {
@@ -18,10 +20,19 @@ const ModalFormulario = forwardRef((props, ref) => {
         curso: '',
     });
 
+    
+    const formRef = useRef(null);
+
     return (
         <div
             ref={ref}
             className={`fixed inset-0 flex h-screen w-screen items-center justify-center bg-neutral-800/25 ${props.mostrarFormulario ? '' : 'hidden'}`}
+            onClick={()=> {
+               if (!formRef.current.contains(event.target)) {
+                props.setMostrarFormulario(false);
+                console.log()
+               } 
+            }}
         >
             <Transition
                 show={props.mostrarFormulario}
@@ -31,11 +42,13 @@ const ModalFormulario = forwardRef((props, ref) => {
                 leave="transition ease-in duration-75 transform"
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
+
+                
             >
-                <div>
-                    <form className="grid h-[500px] w-full grid-cols-2 bg-white p-10 shadow-lg lg:max-w-3xl">
-                        <div className="flex flex-col justify-start gap-6 text-black">
-                            <h1 className="text-5xl font-extrabold">
+                <div ref={formRef}>
+                    <form className="grid h-[500px] w-full grid-cols-2 bg-white p-16 shadow-lg lg:max-w-3xl">
+                        <div className="flex flex-col justify-start gap-6 text-black w-[70%]">
+                            <h1 className="text-4xl font-extrabold">
                                 Contáctenos
                             </h1>
                             <p className="text-sm text-neutral-500">
@@ -50,8 +63,16 @@ const ModalFormulario = forwardRef((props, ref) => {
                                 informes@nextech.pe
                             </p>
                         </div>
-                        <div>
-                            <div className="text-black">Holaaaaaaaa</div>
+                        <div className='flex flex-col gap-2'>
+                            <label className='text-black'>Nombre Completo</label>
+                            <input placeholder={"Nombre Completo"} className="border-b-2 border-b-black w-full border-0 text-black" name='nombre' onChange={(e)=> setData('nombre',e.target.value)} > 
+                            </input>
+                            <label className='text-black'>Correo electrónico</label>
+                            <input placeholder={"Email"} className="border-b-2 border-b-black w-full border-0 text-black" name='email' onChange={(e)=> setData('email',e.target.value)} > 
+                            </input>
+                            <label className='text-black'>Telefono</label>
+                            <input placeholder={"Celular"} className="border-b-2 border-b-black w-full border-0 text-black" name='telefono' onChange={(e)=> setData('telefono',e.target.value)} > 
+                            </input>
                         </div>
                     </form>
                 </div>
