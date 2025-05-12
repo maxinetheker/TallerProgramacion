@@ -55,7 +55,7 @@ Abre tu navegador en `http://localhost:8000` y ¡comienza a explorar!
 
 ## 👤 Autor
 
-* **Kervi Falcón** – [@tu\_usuario](https://github.com/maxinetheker)
+* **Kervi Falcón** – [@tu\maxinetheker](https://github.com/maxinetheker)
 
 ## 📝 Licencia
 
