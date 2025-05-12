@@ -1,4 +1,4 @@
-**NexTech Programming Workshop**
+**NexTech**
 
 Bienvenido al repositorio de la página de **NexTech**, diseñada para el taller de programación. Aquí encontrarás todo lo necesario para instalar, ejecutar y contribuir al proyecto.
 
@@ -15,14 +15,6 @@ Bienvenido al repositorio de la página de **NexTech**, diseñada para el taller
 * [Autor](#autor)
 * [Licencia](#licencia)
 
-## 📝 Descripción
-
-NexTech es una plataforma interactiva creada para enseñar conceptos de programación moderna de manera práctica. En este taller, aprenderás a:
-
-* Crear componentes dinámicos con React.
-* Animar interfaces usando GSAP.
-* Gestionar estilos con Tailwind CSS.
-* Realizar llamadas a APIs REST.
 
 ## ✨ Características
 
@@ -71,4 +63,4 @@ Este proyecto está bajo la licencia **MIT**. Para más detalles, consulta el ar
 
 ---
 
-¡Gracias por participar en el taller de programación de NexTech! Cualquier duda o sugerencia será bienvenida.
+¡Gracias por ver.
