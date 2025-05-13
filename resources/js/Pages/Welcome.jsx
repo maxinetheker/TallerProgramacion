@@ -1,10 +1,12 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import ModalFormulario from '@/Pages/Welcome/ModalFormulario';
 import { Head, Link } from '@inertiajs/react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import MenuLateral from './Welcome/MenuLateral';
 import FirstMenu from './Welcome/FirstSection/FirstMenu';
-
+import CursosSection from './Welcome/Sections/CursosSection';
+import EstadisticasSection from './Welcome/Sections/EstadisticasSection';
+import RegistroSection from './Welcome/Sections/RegistroSection';
 
 //Swiper
 
@@ -31,6 +33,14 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
             ?.classList.add('!flex-row');
         document.getElementById('background')?.classList.add('!hidden');
     };
+
+    useEffect(()=> {
+        if(mostrarFormulario) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    },[mostrarFormulario])
 
     return (
         <>
@@ -161,9 +171,12 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         ></MenuLateral>
                     </div>
                 </section>
-                <section className='h-screen'>
-                    Hola
-                </section>
+                
+                {/* Nuevas secciones de cursos */}
+                <CursosSection />
+                <EstadisticasSection />
+                <RegistroSection setMostrarFormulario={setMostrarFormulario} />
+                
                 <footer className="text-center text-sm text-black dark:text-white/70">
                     {/*                Laravel v{laravelVersion} (PHP v{phpVersion}) */}
                 </footer>
