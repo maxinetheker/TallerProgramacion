@@ -3,7 +3,7 @@ import ModalFormulario from '@/Pages/Welcome/ModalFormulario';
 import { Head, Link } from '@inertiajs/react';
 import { useRef, useState } from 'react';
 import MenuLateral from './Welcome/MenuLateral';
-import FirstMenu from './Welcome/SectionMain/FirstMenu';
+import FirstMenu from './Welcome/FirstSection/FirstMenu';
 
 
 //Swiper
@@ -13,11 +13,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import HeaderFixed from './Welcome/FirstSection/HeaderFixed';
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     const [compras, setCompras] = useState(0);
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
     const modalRef = useRef(null);
+    const headerFirstRef = useRef(null);
     const [menu, setMenu] = useState(false);
     const handleImageError = () => {
         document
@@ -62,7 +64,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     className="absolute top-0 h-[100vh] w-[200vw] max-w-[200vw] -translate-x-[35%] sm:w-[100vw] sm:max-w-[100vw] sm:-translate-x-0 sm:object-cover"
                     src="img/sliderfirst.webp"
                 />
-                <section className="relative flex h-screen min-h-screen flex-col items-center selection:bg-[#FF2D20] selection:text-white">
+                <section ref={headerFirstRef} className="relative flex h-screen min-h-screen flex-col items-center selection:bg-[#FF2D20] selection:text-white">
                     <div className="relative w-full max-w-2xl sm:px-6 lg:max-w-7xl">
                         <header className="flex h-6 w-screen flex-row items-center justify-center gap-2 bg-white py-10 pl-6 sm:w-full sm:bg-transparent lg:grid-cols-3">
                             <Link href={route('home')}>
@@ -139,7 +141,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 </span>
                             </nav>
                         </header>
-
+                        <HeaderFixed auth={auth} setMenu={setMenu} compras={compras} setMostrarFormulario={setMostrarFormulario} headerFirstRef={headerFirstRef.current ?? ""}> 
+                            
+                        </HeaderFixed>
                         <main className="mt-10 flex h-[70vh] flex-col items-start justify-center gap-16 p-10 text-neutral-900 sm:gap-8 sm:p-0">
                             <FirstMenu
                                 setMostrarFormulario={setMostrarFormulario}
