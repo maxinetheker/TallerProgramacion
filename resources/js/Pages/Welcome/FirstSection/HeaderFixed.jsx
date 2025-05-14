@@ -42,7 +42,7 @@ export default function HeaderFixed({
     return (
         <header
             ref={headerRef}
-            className="hidden opacity-0 -tanslate-y-[200px] sm:max-w-screen fixed inset-0 h-6 w-screen flex-row items-center justify-center gap-2 bg-white/90 py-10 pl-6 sm:bg-white/90 lg:grid-cols-3"
+            className="hidden z-10 opacity-0 -tanslate-y-[200px] sm:max-w-screen fixed inset-0 h-6 w-screen flex-row items-center justify-center gap-2 bg-white/90 py-10 pl-6 sm:bg-white/90 lg:grid-cols-3"
         >
             <div className="flex w-screen items-center justify-center xl:max-w-[80vw] 2xl:max-w-[60vw]">
                 <Link href={route('home')}>
