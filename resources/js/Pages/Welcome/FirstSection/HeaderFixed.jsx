@@ -16,7 +16,7 @@ export default function HeaderFixed({
     const headerRef = useRef(null);
 
     useLayoutEffect(() => {
-        if (headerFirstRef) {
+       
             console.log(headerFirstRef);
             gsap.to(headerRef.current,
                 {
@@ -33,10 +33,11 @@ export default function HeaderFixed({
                     onStart: () => {
                         headerRef.current.style.display = 'flex';
                     },
+
                 },
             );
-        }
-    }, [headerFirstRef]);
+        
+    }, []);
 
     useLayoutEffect(() => {});
     return (
