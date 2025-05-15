@@ -29,7 +29,7 @@ const ModalFormulario = forwardRef((props, ref) => {
     return (
         <div
             ref={ref}
-            className={`fixed inset-0 flex h-screen w-screen items-center justify-center bg-neutral-800/25 ${props.mostrarFormulario ? '' : 'hidden'}`}
+            className={`fixed z-20 inset-0 flex h-screen w-screen items-center justify-center bg-neutral-800/25 ${props.mostrarFormulario ? '' : 'hidden'}`}
             onClick={()=> {
                if (!formRef.current.contains(event.target)) {
                 props.setMostrarFormulario(false);

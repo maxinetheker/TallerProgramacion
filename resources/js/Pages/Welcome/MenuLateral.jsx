@@ -34,7 +34,7 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
                         <ul className="mt-4 flex flex-col gap-8">
                             <li>
                                 <Link
-                                    href="#nosotros"
+                                    href="#cursos"
                                     className="flex items-center text-neutral-600"
                                 >
                                     <img

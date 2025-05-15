@@ -34,6 +34,16 @@ export default function FirstMenu({ setMostrarFormulario }) {
         return () => ctx.revert();
     }, []);
 
+    const mapeoAutomaticoConCreacionDeDivs = (texto) => {
+        const palabras = texto.split(' ');
+        const elementos = palabras.map((palabra, index) => (
+            <div key={index} className="fade-item">
+                {palabra}
+            </div>
+        ));
+        return elementos;
+    };
+
     return (
         <div ref={containerRef} className='flex flex-col items-start justify-center gap-16 sm:ml-10 '>
             <h1 className="fade-in-left max-w-[80vw] text-wrap text-4xl font-extrabold sm:w-[600px] 2xl:text-5xl fade-item">
@@ -51,5 +61,6 @@ export default function FirstMenu({ setMostrarFormulario }) {
                 Deseo Información
             </Button>
         </div>
+        
     );
 }

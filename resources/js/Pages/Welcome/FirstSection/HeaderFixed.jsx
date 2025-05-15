@@ -15,35 +15,37 @@ export default function HeaderFixed({
 }) {
     const headerRef = useRef(null);
 
-    useLayoutEffect(() => {
-       
-            console.log(headerFirstRef);
-            gsap.to(headerRef.current,
-                {
-                    
-                    translateY: 0,
-                    opacity: 1,
-                    scrollTrigger: {
-                        trigger: headerFirstRef,
-                        start: 'top top ',
-                        end: 'bottom 80%',
-                        scrub: true,
-                        
+    useEffect(() => {
+        console.log(headerFirstRef);
+        if (headerRef.current) {
+            gsap.to(headerRef.current, {
+                translateY: 0,
+                opacity: 1,
+                scrollTrigger: {
+                    trigger: headerFirstRef,
+                    start: 'top+=100 top',
+                    end: 'top+=300 top',
+                    scrub: true,
+                    onEnter: () => {
+                        if (headerRef.current) {
+                            headerRef.current.style.display = 'flex';
+                        }
                     },
-                    onStart: () => {
-                        headerRef.current.style.display = 'flex';
+                    onLeaveBack: () => {
+                        if (headerRef.current) {
+                            headerRef.current.style.display = 'none';
+                        }
                     },
-
                 },
-            );
-        
-    }, []);
+            });
+        }
+    }, [headerRef]);
 
     useLayoutEffect(() => {});
     return (
         <header
             ref={headerRef}
-            className="hidden opacity-0 -tanslate-y-[200px] sm:max-w-screen fixed inset-0 h-6 w-screen flex-row items-center justify-center gap-2 bg-white/90 py-10 pl-6 sm:bg-white/90 lg:grid-cols-3"
+            className="-tanslate-y-[200px] sm:max-w-screen fixed inset-0 z-10 hidden h-6 w-screen flex-row items-center justify-center gap-2 bg-white/90 py-10 pl-6 opacity-0 sm:bg-white/90 lg:grid-cols-3"
         >
             <div className="flex w-screen items-center justify-center xl:max-w-[80vw] 2xl:max-w-[60vw]">
                 <Link href={route('home')}>
@@ -74,9 +76,9 @@ export default function HeaderFixed({
                     {auth.user ? (
                         <Link
                             href={route('dashboard')}
-                            className="hidden rounded-md px-3 py-2  ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] sm:inline text-[#727070]"
+                            className="hidden rounded-md px-3 py-2 text-[#727070] ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] sm:inline"
                         >
-                            Inicio
+                            DASHBOARD
                         </Link>
                     ) : (
                         <>
