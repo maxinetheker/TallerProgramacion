@@ -35,7 +35,7 @@
         "animate.css": "^4.1.1",
         "framer-motion": "^12.11.0",
         "lucide-react": "^0.510.0",
-        "sweetalert2": "^11.19.1",
+        "sweetalert2": "^11.22.0",
         "swiper": "^11.2.6"
     }
 }

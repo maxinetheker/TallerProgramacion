@@ -7,7 +7,7 @@ import FirstMenu from './Welcome/FirstSection/FirstMenu';
 import CursosSection from './Welcome/Sections/CursosSection';
 import EstadisticasSection from './Welcome/Sections/EstadisticasSection';
 import RegistroSection from './Welcome/Sections/RegistroSection';
-
+import Footer from '@/Components/Footer';
 //Swiper
 
 // Import Swiper styles
@@ -179,6 +179,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 
                 <footer className="text-center text-sm text-black dark:text-white/70">
                     {/*                Laravel v{laravelVersion} (PHP v{phpVersion}) */}
+                    <Footer></Footer>
                 </footer>
             </div>
         </>
