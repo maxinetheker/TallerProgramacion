@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/TextInput-CmN0JZ3x.js
-import{r,j as a}from"./app-kZND65FG.js";const d=r.forwardRef(function({type:s="text",className:n="",isFocused:o=!1,...u},f){const t=r.useRef(null);return r.useImperativeHandle(f,()=>({focus:()=>{var e;return(e=t.current)==null?void 0:e.focus()}})),r.useEffect(()=>{var e;o&&((e=t.current)==null||e.focus())},[o]),a.jsx("input",{...u,type:s,className:"rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 "+n,ref:t})});export{d as T};
-========
-import{r,j as a}from"./app-C6OtZD_r.js";const d=r.forwardRef(function({type:s="text",className:n="",isFocused:o=!1,...u},f){const t=r.useRef(null);return r.useImperativeHandle(f,()=>({focus:()=>{var e;return(e=t.current)==null?void 0:e.focus()}})),r.useEffect(()=>{var e;o&&((e=t.current)==null||e.focus())},[o]),a.jsx("input",{...u,type:s,className:"rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 "+n,ref:t})});export{d as T};
->>>>>>>> 668458b26bec084fdf1a888f41f83ad0142d4be6:public/build/assets/TextInput-B3n2-VXT.js

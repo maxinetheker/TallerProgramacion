@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/DeleteUser-Drmvvh9D.js
-import{S as u,j as r}from"./app-kZND65FG.js";function l({idUser:e,mostrarAlerta:o,historial:s}){const{data:i,post:n}=u({id:e}),t=()=>{console.log(e),n(route("usuarios.delete",i.id),{onFinish:()=>{o("Éxito","El usuario se eliminó correctamente.","success")},onError:a=>{o("Error","Hubo un error al eliminar el usuario:"+a,"error")}})};return r.jsx(r.Fragment,{children:s[0].estado!="0"?r.jsx("img",{src:"img/trash.svg",className:"h-6 w-6 cursor-pointer hover:scale-110",onClick:t}):""})}export{l as default};
-========
-import{S as u,j as r}from"./app-C6OtZD_r.js";function l({idUser:e,mostrarAlerta:o,historial:s}){const{data:i,post:n}=u({id:e}),t=()=>{console.log(e),n(route("usuarios.delete",i.id),{onFinish:()=>{o("Éxito","El usuario se eliminó correctamente.","success")},onError:a=>{o("Error","Hubo un error al eliminar el usuario:"+a,"error")}})};return r.jsx(r.Fragment,{children:s[0].estado!="0"?r.jsx("img",{src:"img/trash.svg",className:"h-6 w-6 cursor-pointer hover:scale-110",onClick:t}):""})}export{l as default};
->>>>>>>> 668458b26bec084fdf1a888f41f83ad0142d4be6:public/build/assets/DeleteUser-B5edrbSM.js
