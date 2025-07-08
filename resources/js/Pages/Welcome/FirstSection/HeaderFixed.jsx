@@ -54,7 +54,7 @@ export default function HeaderFixed({
                 <nav className="flex flex-1 items-center justify-evenly gap-6 sm:mr-10 sm:justify-end">
                     <Link
                         className="hidden text-[#727070] hover:text-white sm:inline"
-                        href="#cursos"
+                        href={route('home') +"/#cursos"}
                     >
                         CURSOS
                     </Link>

@@ -16,7 +16,6 @@ const ModalFormulario = forwardRef((props, ref) => {
 
     const enviarFormulario = (e) => {
         e.preventDefault();
-
         post(route('contactar'), {
             onSuccess: () => {
                 props.setMostrarFormulario(false);
@@ -121,6 +120,7 @@ const ModalFormulario = forwardRef((props, ref) => {
                                 <option value="react">React.js Básico</option>
                                 <option value="devops">DevOps Fundamentals</option>
                                 <option value="office">Microsoft Office (Word, Excel, PowerPoint)</option>
+                                <option value="sap">Gestión Empresarial con SAP</option>
                             </select>
                             {errors.curso && (
                                 <p className="text-red-500 text-sm mt-1">{errors.curso}</p>

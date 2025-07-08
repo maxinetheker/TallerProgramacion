@@ -3,6 +3,8 @@ import { Link } from '@inertiajs/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect, useRef } from 'react';
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CursosSection() {
@@ -132,7 +134,7 @@ export default function CursosSection() {
 
                 <div className="text-center mt-12">
                     <Link 
-                        href="/cursos" 
+                        href={route('cursos') + "#section"}
                         className="bg-[#0B60F7] hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center"
                     >
                         Ver todos los cursos

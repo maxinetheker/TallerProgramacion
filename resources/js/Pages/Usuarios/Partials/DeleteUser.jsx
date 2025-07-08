@@ -18,14 +18,14 @@ export default function DeleteUser({idUser, mostrarAlerta, historial}) {
     }
 
     return (
-        <>
+        <div className="flex gap-3 select-none font-medium">
         {
-         historial[0].estado != '0' ?   <img
+         historial[0].estado != '0' ?   <>Eliminar<img
                 src="img/trash.svg"
                 className="h-6 w-6 cursor-pointer hover:scale-110"
                 onClick={eliminar}
-            ></img> : ''
+            ></img></> : ''
         }
-        </>
+        </div>
     );
 }

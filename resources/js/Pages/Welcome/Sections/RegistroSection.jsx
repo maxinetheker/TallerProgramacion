@@ -81,12 +81,12 @@ export default function RegistroSection({ setMostrarFormulario }) {
                   Completa el formulario y un asesor se pondrá en contacto contigo para brindarte toda la información que necesitas.
                 </p>
                 <div className="space-y-4">
-                  <Link
+                  <a
                     onClick={() => setMostrarFormulario(true)}
-                    className="block w-full text-center py-4 text-lg font-semibold border-2 border-blue-600 rounded-lg hover:bg-blue-50 transition text-gray-600"
+                    className="block w-full text-center py-4 text-lg font-semibold border-2 border-blue-600 rounded-lg hover:bg-blue-50 transition text-gray-600 cursor-pointer"
                   >
                     Solicitar información
-                  </Link>
+                  </a>
                   <Link
                     href={route('register')}
                     className="block w-full text-center py-4 text-lg font-semibold border-2 border-blue-600 rounded-lg hover:bg-blue-50 transition text-gray-600"

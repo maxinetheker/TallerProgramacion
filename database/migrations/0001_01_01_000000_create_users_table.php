@@ -27,10 +27,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        DB::statement("
-        INSERT OR REPLACE INTO sqlite_sequence(name, seq)
-        VALUES ('users', 9999999)
-    ");
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('usuario')->primary();

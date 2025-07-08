@@ -3,6 +3,7 @@ import { useForm } from "@inertiajs/react";
 import React, {Fragment, useEffect, useState} from "react";
 import Swal from "sweetalert2";
 import DeleteUser from "./DeleteUser";
+import { ArrowBigDown, ArrowDown, ArrowDown01Icon, ArrowDownFromLine, ArrowDownIcon, ArrowDownToDot, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, FileDown, MoveDown, WindArrowDown } from "lucide-react";
 
 
 
@@ -49,7 +50,7 @@ export default function DatosUsuarios({ user, expanded, toggleRow, historial, id
       <td className="px-4 py-2">{user.usuario}</td>
       <td className="px-4 py-2">{user.nombres}</td>
       <td className="px-4 py-2">{user.apellidos}</td>
-      <td className="px-4 py-2">{user.id}</td>
+      <td className="px-4 py-2 flex justify-between">{user.id} {expanded ? <ChevronUp/> : <ChevronRight /> }</td>
     </tr>
 
     {/* Filas expandidas */}
@@ -62,10 +63,10 @@ export default function DatosUsuarios({ user, expanded, toggleRow, historial, id
                 { historial[0].estado != '0' ? (
                     <select id="permisos" name="permisos" onChange={(e) => setData('permisos', e.target.value)} value={data.permisos}>
                     <option value="Administrador">Administrador</option>
-                    <option value="UsuarioNormal">Usuario Normal</option>
+                    <option value="UsuarioNormal">Usuario Común</option>
                     </select>
                 ) : (
-                    user.permisos == "Administrador" ? "Administrador" : "Usuario Normal"  // Solo el texto o lo que quieras mostrar
+                    user.permisos == "Administrador" ? "Administrador" : "Usuario Común"  // Solo el texto o lo que quieras mostrar
                 )}
                 </td>
             <td className="px-4 py-2 font-semibold">ItemAi</td>
@@ -120,7 +121,7 @@ export default function DatosUsuarios({ user, expanded, toggleRow, historial, id
            { historial[0].estado != '0' ? (<td className="px-4 py-2 font-bold ">
                  <Select id={"estado"} name={"estado"} onChange={(e)=> setData('estado', e.target.value)} value={data.estado} >
                   <option value="1">Activo</option>
-                  <option value="2">Desactivo</option>
+                  <option value="2">Desactivado</option>
                  </Select>
              </td> ): <td className="px-4 py-2 font-bold text-red-600">Anulado</td>}
           </tr>
@@ -128,7 +129,7 @@ export default function DatosUsuarios({ user, expanded, toggleRow, historial, id
             <td colSpan={4} className=" justify-center items-center py-4">
               <div className='w-full flex flex-row justify-center items-center text-center gap-20 '>
               {
-                 historial[0].estado != '0' ?  (<img src='img/save.svg' className='w-6 h-6 cursor-pointer hover:scale-110' onClick={() => submit()}></img>) : "" }
+                 historial[0].estado != '0' ?  (<div className="flex gap-3 select-none font-medium">Guardar <img src='img/save.svg' className='w-6 h-6 cursor-pointer hover:scale-110' onClick={() => submit()}></img> </div>) : "" }
                 <DeleteUser
                   idUser={user.id}
                   mostrarAlerta={mostrarAlerta}
