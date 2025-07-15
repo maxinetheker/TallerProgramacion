@@ -4,7 +4,7 @@ import { Link, ShoppingBag, ShoppingBasket } from "lucide-react";
 import { useEffect, useState } from "react";
 
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+export default function Welcome({ auth, laravelVersion, phpVersion, miscursos}) {
     
     const [compras,setCompras] = useState([]);
 
@@ -13,7 +13,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
         if(data) {
             setCompras(JSON.parse(data));
         }
-        
+        console.log(miscursos)
     }, [])
 
     useEffect(() => {
@@ -78,6 +78,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             }}>NUESTROS CURSOS</h1>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8  p-4 ">
                                 {cursos.map((curso, index) => (
+                                    
                                     <div key={curso.id} className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 animate-scroll">
                                         <div className="h-48 bg-gray-300 relative ">
                                             <img

@@ -12,6 +12,7 @@ export default function HeaderFixed({
     compras,
     setMostrarFormulario,
     headerFirstRef,
+    ProcederCompra
 }) {
     const headerRef = useRef(null);
 
@@ -90,10 +91,12 @@ export default function HeaderFixed({
                             </Link>
                         </>
                     )}
+                {!route().current('pasarela') && 
+                    <>  
                     <span className="hidden sm:inline">|</span>
 
-                    <Link className="relative box-content hover:scale-110">
-                        <div className="bg-red absolute inset-0 -translate-y-4 translate-x-3 rounded-full bg-red-500 text-center">
+                    <div className="relative cursor-pointer box-content hover:scale-110" onClick={() => ProcederCompra(compras)}>
+                        <div className="bg-red  absolute inset-0 -translate-y-4 translate-x-3 rounded-full bg-red-500 text-center">
                             {compras}
                         </div>
                         <img
@@ -106,7 +109,8 @@ export default function HeaderFixed({
                             className="inline h-6 max-w-[30px] hover:brightness-200 sm:hidden"
                             alt=""
                         />
-                    </Link>
+                    </div>
+                    </>  }
                     <span
                         className="relative box-content hover:scale-110"
                         href=""

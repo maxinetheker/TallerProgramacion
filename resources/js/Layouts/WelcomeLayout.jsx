@@ -1,30 +1,32 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
-import ModalFormulario from '@/Pages/Welcome/ModalFormulario';
-import { Head, Link } from '@inertiajs/react';
-import { Children, useEffect, useRef, useState } from 'react';
-import MenuLateral from '@/Pages/Welcome/MenuLateral';
-import FirstMenu from '@/Pages/Welcome/FirstSection/FirstMenu';
-import CursosSection from '@/Pages/Welcome/Sections/CursosSection';
-import EstadisticasSection from '@/Pages/Welcome/Sections/EstadisticasSection';
-import RegistroSection from '@/Pages/Welcome/Sections/RegistroSection';
 import Footer from '@/Components/Footer';
+import FirstMenu from '@/Pages/Welcome/FirstSection/FirstMenu';
+import MenuLateral from '@/Pages/Welcome/MenuLateral';
+import ModalFormulario from '@/Pages/Welcome/ModalFormulario';
+import { Head, Link, router } from '@inertiajs/react';
+import { useEffect, useRef, useState } from 'react';
 //Swiper
 
 // Import Swiper styles
+import HeaderFixed from '@/Pages/Welcome/FirstSection/HeaderFixed';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import HeaderFixed from '@/Pages/Welcome/FirstSection/HeaderFixed';
 
-export default function WelcomeLayout({ auth, laravelVersion, phpVersion, children }) {
+export default function WelcomeLayout({
+    auth,
+    laravelVersion,
+    phpVersion,
+    children,
+}) {
     const [compras, setCompras] = useState(0);
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
     const modalRef = useRef(null);
     const headerFirstRef = useRef(null);
     const [menu, setMenu] = useState(false);
 
-    const [carro, setCarro] = useState([])
+    const [carro, setCarro] = useState([]);
     const handleImageError = () => {
         document
             .getElementById('screenshot-container')
@@ -38,27 +40,26 @@ export default function WelcomeLayout({ auth, laravelVersion, phpVersion, childr
 
     useEffect(() => {
         const PrimeraVez = () => {
-            const comprasObtenidas = JSON.parse(localStorage.getItem('compras'));
+            const comprasObtenidas = JSON.parse(
+                localStorage.getItem('compras'),
+            );
             setCarro(comprasObtenidas);
-           
-        }
+        };
         PrimeraVez();
-
         const handleStorage = (event) => {
             const comprasObtenidas = JSON.parse(event.newValue);
             setCarro(comprasObtenidas);
-           
         };
 
         const handleCustomEvent = () => {
-            const comprasObtenidas = JSON.parse(localStorage.getItem('compras'));
+            const comprasObtenidas = JSON.parse(
+                localStorage.getItem('compras'),
+            );
             setCarro(comprasObtenidas);
-           
         };
 
         window.addEventListener('storage', handleStorage);
         window.addEventListener('local-storage-compras', handleCustomEvent);
-
 
         if (mostrarFormulario) {
             document.body.style.overflow = 'hidden';
@@ -69,9 +70,13 @@ export default function WelcomeLayout({ auth, laravelVersion, phpVersion, childr
         return () => {
             window.removeEventListener('storage', handleStorage);
         };
-    }, [mostrarFormulario])
+    }, [mostrarFormulario]);
 
-
+    const ProcederCompra = (cantidad) => {
+        if (cantidad > 0) {
+            router.get(route('pasarela') + "#PasarelaPrincipal");
+        }
+    };
 
     return (
         <>
@@ -105,7 +110,10 @@ export default function WelcomeLayout({ auth, laravelVersion, phpVersion, childr
                     className="absolute top-0 h-[100vh] w-[200vw] max-w-[200vw] -translate-x-[35%] sm:w-[100vw] sm:max-w-[100vw] sm:-translate-x-0 sm:object-cover"
                     src="img/sliderfirst.webp"
                 />
-                <section ref={headerFirstRef} className="relative flex h-screen min-h-screen flex-col items-center selection:bg-[#FF2D20] selection:text-white">
+                <section
+                    ref={headerFirstRef}
+                    className="relative flex h-screen min-h-screen flex-col items-center selection:bg-[#FF2D20] selection:text-white"
+                >
                     <div className="relative w-full max-w-2xl sm:px-6 lg:max-w-7xl">
                         <header className="flex h-6 w-screen flex-row items-center justify-center gap-2 bg-white py-10 pl-6 sm:w-full sm:bg-transparent lg:grid-cols-3">
                             <Link href={route('home')}>
@@ -115,30 +123,30 @@ export default function WelcomeLayout({ auth, laravelVersion, phpVersion, childr
                             </Link>
                             <nav className="-mx-3 flex flex-1 items-center justify-evenly gap-6 sm:justify-end">
                                 <Link
-                                    className="hidden text-[#727070] hover:text-white sm:inline"
-                                    href={route('home') + "/#cursos"}
+                                    className="hidden text-[#727070] hover:text-white sm:inline underline-hover"
+                                    href={route('home') + '/#cursos'}
                                 >
                                     CURSOS
                                 </Link>
                                 <Link
-                                    className="hidden text-[#727070] hover:text-white sm:inline"
+                                    className="hidden text-[#727070] hover:text-white sm:inline underline-hover"
                                     href="#nosotros"
                                 >
                                     NOSOTROS
                                 </Link>
                                 <Link
-                                    className="hidden text-[#727070] hover:text-white sm:inline"
+                                    className="hidden text-[#727070] hover:text-white sm:inline underline-hover"
                                     href="#"
                                 >
                                     BLOG
                                 </Link>
-                                <Link className="hidden text-[#727070] hover:text-white sm:inline">
+                                <Link className="hidden text-[#727070] hover:text-white sm:inline underline-hover">
                                     CONTACTO
                                 </Link>
                                 {auth.user ? (
                                     <Link
                                         href={route('dashboard')}
-                                        className="hidden rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] sm:inline dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        className="hidden rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] sm:inline dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white underline-hover"
                                     >
                                         DASHBOARD
                                     </Link>
@@ -152,23 +160,36 @@ export default function WelcomeLayout({ auth, laravelVersion, phpVersion, childr
                                         </Link>
                                     </>
                                 )}
-                                <span className="hidden sm:inline">|</span>
+                                {!route().current('pasarela') && (
+                                    <>
+                                        <span className="hidden sm:inline">
+                                            |
+                                        </span>
 
-                                <Link className="relative box-content hover:scale-110">
-                                    <div className="bg-red absolute inset-0 -translate-y-4 translate-x-3 rounded-full bg-red-500 text-center">
-                                        {carro?.length || 0}
-                                    </div>
-                                    <img
-                                        src="img/shop.png"
-                                        className="hidden h-6 max-w-[30px] hover:brightness-200 sm:inline"
-                                        alt=""
-                                    />
-                                    <img
-                                        src="img/shop-black.png"
-                                        className="inline h-6 max-w-[30px] hover:brightness-200 sm:hidden"
-                                        alt=""
-                                    />
-                                </Link>
+                                        <div
+                                            className="relative box-content cursor-pointer hover:scale-110"
+                                            onClick={() => {
+                                                ProcederCompra(
+                                                    carro?.length || 0,
+                                                );
+                                            }}
+                                        >
+                                            <div className="bg-red absolute inset-0 -translate-y-4 translate-x-3 rounded-full bg-red-500 text-center">
+                                                {carro?.length || 0}
+                                            </div>
+                                            <img
+                                                src="img/shop.png"
+                                                className="hidden h-6 max-w-[30px] hover:brightness-200 sm:inline"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="img/shop-black.png"
+                                                className="inline h-6 max-w-[30px] hover:brightness-200 sm:hidden"
+                                                alt=""
+                                            />
+                                        </div>
+                                    </>
+                                )}
                                 <span
                                     className="relative box-content hover:scale-110"
                                     href=""
@@ -182,9 +203,14 @@ export default function WelcomeLayout({ auth, laravelVersion, phpVersion, childr
                                 </span>
                             </nav>
                         </header>
-                        <HeaderFixed auth={auth} setMenu={setMenu} compras={carro?.length || 0} setMostrarFormulario={setMostrarFormulario} headerFirstRef={headerFirstRef.current ?? ""}>
-
-                        </HeaderFixed>
+                        <HeaderFixed
+                            auth={auth}
+                            setMenu={setMenu}
+                            compras={carro?.length || 0}
+                            setMostrarFormulario={setMostrarFormulario}
+                            ProcederCompra={ProcederCompra}
+                            headerFirstRef={headerFirstRef.current ?? ''}
+                        ></HeaderFixed>
                         <main className="mt-10 flex h-[70vh] flex-col items-start justify-center gap-16 p-10 text-neutral-900 sm:gap-8 sm:p-0">
                             <FirstMenu
                                 setMostrarFormulario={setMostrarFormulario}
@@ -204,7 +230,7 @@ export default function WelcomeLayout({ auth, laravelVersion, phpVersion, childr
                 </section>
 
                 {/* Nuevas secciones de cursos */}
-                {children(setMostrarFormulario)}
+                {children(setMostrarFormulario, carro)}
 
                 <footer className="text-center text-sm text-black dark:text-white/70">
                     {/*                Laravel v{laravelVersion} (PHP v{phpVersion}) */}
