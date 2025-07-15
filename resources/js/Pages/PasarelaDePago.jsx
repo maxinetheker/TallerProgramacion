@@ -18,7 +18,6 @@ export default function ({ auth, laravelVersion, phpVersion }) {
                         confirmButtonText: 'Aceptar',
                     }).then(() => {
                         window.location.href = route('home');
-
                     });
                 },
                 onError: () => {
@@ -32,6 +31,7 @@ export default function ({ auth, laravelVersion, phpVersion }) {
             },
         );
     };
+
     return (
         <>
             <Head title="Comprar Cursos" />
@@ -41,6 +41,23 @@ export default function ({ auth, laravelVersion, phpVersion }) {
                 phpVersion={phpVersion}
             >
                 {(setMostrarFormulario, carro) => {
+                    const handleEliminar = (id) => {
+                        const nuevasCompras = carro.filter(
+                            (item) => item.id !== id,
+                        );
+
+                        localStorage.setItem(
+                            'compras',
+                            JSON.stringify(nuevasCompras),
+                        );
+
+                        if (nuevasCompras.length === 0) {
+                            window.location.href = '/cursos#section';
+                        }
+
+                      /*   setMostrarFormulario((prev) => !prev); */
+                    };
+
                     const total = carro.reduce((acc, item) => {
                         const precio = parseFloat(
                             item.precio.replace('S/.', '').replace(',', ''),
@@ -49,7 +66,10 @@ export default function ({ auth, laravelVersion, phpVersion }) {
                     }, 0);
 
                     return (
-                        <section id="PasarelaPrincipal" className="bg-gray-100 px-4 py-8">
+                        <section
+                            id="PasarelaPrincipal"
+                            className="bg-gray-100 px-4 py-8"
+                        >
                             <div className="mx-auto max-w-4xl rounded-lg bg-white p-6 shadow-md">
                                 <h2 className="mb-6 text-2xl font-bold">
                                     Resumen del Pago
@@ -66,7 +86,7 @@ export default function ({ auth, laravelVersion, phpVersion }) {
                                                 className="h-24 w-24 rounded object-cover"
                                             />
                                             <div className="flex-1">
-                                                <h3 className="text-lg font-semibold">
+                                                <h3 className="text-lg font-semibold text-black">
                                                     {curso.titulo}
                                                 </h3>
                                                 <p className="text-sm text-gray-600">
@@ -79,6 +99,14 @@ export default function ({ auth, laravelVersion, phpVersion }) {
                                             <span className="text-lg font-bold text-blue-600">
                                                 {curso.precio}
                                             </span>
+                                            <button
+                                                onClick={() =>
+                                                    handleEliminar(curso.id)
+                                                }
+                                                className="ml-4 rounded bg-red-600 px-3 py-1 text-white transition hover:bg-red-700"
+                                            >
+                                                Eliminar
+                                            </button>
                                         </div>
                                     ))}
                                 </div>
@@ -94,9 +122,7 @@ export default function ({ auth, laravelVersion, phpVersion }) {
 
                                 <div className="mt-6 text-right">
                                     <button
-                                        onClick={() => {
-                                            handlePagar(carro);
-                                        }}
+                                        onClick={() => handlePagar(carro)}
                                         className="rounded bg-blue-600 px-6 py-3 text-white transition hover:bg-blue-700"
                                     >
                                         Proceder al pago

@@ -56,7 +56,7 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-lg mb-2">Contáctanos</h3>
           <p>Av. Principal 123, Lima, Perú</p>
-          <p>contacto@miempresa.pe</p>
+          <p>contacto@nextech.pe</p>
           <p>+51 987 654 321</p>
         </div>
 
