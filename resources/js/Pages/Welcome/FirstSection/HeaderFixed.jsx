@@ -12,7 +12,7 @@ export default function HeaderFixed({
     compras,
     setMostrarFormulario,
     headerFirstRef,
-    ProcederCompra
+    ProcederCompra,
 }) {
     const headerRef = useRef(null);
 
@@ -55,23 +55,42 @@ export default function HeaderFixed({
                 <nav className="flex flex-1 items-center justify-evenly gap-6 sm:mr-10 sm:justify-end">
                     <a
                         className="hidden text-[#727070] hover:text-white sm:inline"
-                        href={route('home') +"/#cursos"}
+                        href={
+                            route().current('home')
+                                ? '#cursos'
+                                : route('home') + '#cursos'
+                        }
                     >
                         CURSOS
                     </a>
                     <a
                         className="hidden text-[#727070] hover:text-white sm:inline"
-                        href="#nosotros"
+                        href={
+                            route().current('home')
+                                ? '#nosotros'
+                                : route('home') + '#nosotros'
+                        }
                     >
                         NOSOTROS
                     </a>
                     <a
                         className="hidden text-[#727070] hover:text-white sm:inline"
-                        href="#blog"
+                        href={
+                            route().current('home')
+                                ? '#blog'
+                                : route('home') + '#blog'
+                        }
                     >
                         BLOG
                     </a>
-                    <a className="hidden text-[#727070] hover:text-white sm:inline" href="#contacto">
+                    <a
+                        className="hidden text-[#727070] hover:text-white sm:inline"
+                        href={
+                            route().current('home')
+                                ? '#contacto'
+                                : route('home') + '#contacto'
+                        }
+                    >
                         CONTACTO
                     </a>
                     {auth.user ? (
@@ -91,26 +110,30 @@ export default function HeaderFixed({
                             </Link>
                         </>
                     )}
-                {!route().current('pasarela') && 
-                    <>  
-                    <span className="hidden sm:inline">|</span>
+                    {!route().current('pasarela') && (
+                        <>
+                            <span className="hidden sm:inline">|</span>
 
-                    <div className="relative cursor-pointer box-content hover:scale-110" onClick={() => ProcederCompra(compras)}>
-                        <div className="bg-red  absolute inset-0 -translate-y-4 translate-x-3 rounded-full bg-red-500 text-center">
-                            {compras}
-                        </div>
-                        <img
-                            src="img/shop-black.png"
-                            className="hidden h-6 max-w-[30px] hover:brightness-200 sm:inline"
-                            alt=""
-                        />
-                        <img
-                            src="img/shop-black.png"
-                            className="inline h-6 max-w-[30px] hover:brightness-200 sm:hidden"
-                            alt=""
-                        />
-                    </div>
-                    </>  }
+                            <div
+                                className="relative box-content cursor-pointer hover:scale-110"
+                                onClick={() => ProcederCompra(compras)}
+                            >
+                                <div className="bg-red absolute inset-0 -translate-y-4 translate-x-3 rounded-full bg-red-500 text-center">
+                                    {compras}
+                                </div>
+                                <img
+                                    src="img/shop-black.png"
+                                    className="hidden h-6 max-w-[30px] hover:brightness-200 sm:inline"
+                                    alt=""
+                                />
+                                <img
+                                    src="img/shop-black.png"
+                                    className="inline h-6 max-w-[30px] hover:brightness-200 sm:hidden"
+                                    alt=""
+                                />
+                            </div>
+                        </>
+                    )}
                     <span
                         className="relative box-content hover:scale-110"
                         href=""

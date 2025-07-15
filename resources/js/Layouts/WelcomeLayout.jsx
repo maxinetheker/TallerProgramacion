@@ -3,7 +3,7 @@ import Footer from '@/Components/Footer';
 import FirstMenu from '@/Pages/Welcome/FirstSection/FirstMenu';
 import MenuLateral from '@/Pages/Welcome/MenuLateral';
 import ModalFormulario from '@/Pages/Welcome/ModalFormulario';
-import { Head, Link, router } from '@inertiajs/react';
+import { Head, Link, router, usePage } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 //Swiper
 
@@ -37,6 +37,21 @@ export default function WelcomeLayout({
             ?.classList.add('!flex-row');
         document.getElementById('background')?.classList.add('!hidden');
     };
+
+    const page = usePage();
+
+    // Al montar o cambiar de página, verifica si hay hash y scrollea
+    useEffect(() => {
+        const hash = window.location.hash;
+        if (hash) {
+            const el = document.getElementById(hash.replace('#', ''));
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                }, 50);
+            }
+        }
+    }, [page.url]);
 
     useEffect(() => {
         const PrimeraVez = () => {
@@ -74,7 +89,7 @@ export default function WelcomeLayout({
 
     const ProcederCompra = (cantidad) => {
         if (cantidad > 0) {
-            router.get(route('pasarela') + "#PasarelaPrincipal");
+            router.get(route('pasarela') + '#PasarelaPrincipal');
         }
     };
 
@@ -123,30 +138,51 @@ export default function WelcomeLayout({
                             </Link>
                             <nav className="-mx-3 flex flex-1 items-center justify-evenly gap-6 sm:justify-end">
                                 <a
-                                    className="hidden text-[#727070] hover:text-white sm:inline underline-hover"
-                                    href={'#cursos'}
+                                    className="underline-hover hidden text-[#727070] hover:text-white sm:inline"
+                                    href={
+                                        route().current('home')
+                                            ? '#cursos'
+                                            : route('home') + '#cursos'
+                                    }
                                 >
                                     CURSOS
                                 </a>
                                 <a
-                                    className="hidden text-[#727070] hover:text-white sm:inline underline-hover"
-                                    href="#nosotros"
+                                    className="underline-hover hidden text-[#727070] hover:text-white sm:inline"
+                                    href={
+                                        route().current('home')
+                                            ? '#nosotros'
+                                            : route('home') + '#nosotros'
+                                    }
                                 >
                                     NOSOTROS
                                 </a>
-                                <Link
-                                    className="hidden text-[#727070] hover:text-white sm:inline underline-hover"
-                                    href="#blog"
+
+                                <a
+                                    className="underline-hover hidden text-[#727070] hover:text-white sm:inline"
+                                    href={
+                                        route().current('home')
+                                            ? '#blog'
+                                            : route('home') + '#blog'
+                                    }
                                 >
                                     BLOG
-                                </Link>
-                                <a className="hidden text-[#727070] hover:text-white sm:inline underline-hover" href="#contacto">
+                                </a>
+
+                                <a
+                                    className="underline-hover hidden text-[#727070] hover:text-white sm:inline"
+                                    href={
+                                        route().current('home')
+                                            ? '#contacto'
+                                            : route('home') + '#contacto'
+                                    }
+                                >
                                     CONTACTO
                                 </a>
                                 {auth.user ? (
                                     <Link
                                         href={route('dashboard')}
-                                        className="hidden rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] sm:inline dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white underline-hover"
+                                        className="underline-hover hidden rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] sm:inline dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                     >
                                         DASHBOARD
                                     </Link>

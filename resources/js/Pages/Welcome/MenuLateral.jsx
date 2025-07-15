@@ -17,7 +17,7 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
             >
                 <div
                     ref={ref}
-                    className="fixed right-0 top-0 h-screen w-[80vw] bg-white p-10 z-50"
+                    className="fixed right-0 top-0 z-50 h-screen w-[80vw] bg-white p-10"
                 >
                     <div className="flex justify-between border-b-2 border-b-neutral-400 pb-4">
                         <ApplicationLogo className="w-40"></ApplicationLogo>
@@ -30,11 +30,15 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
                             X
                         </span>
                     </div>
-                    <div className='mb-10'>
+                    <div className="mb-10">
                         <ul className="mt-4 flex flex-col gap-8">
                             <li onClick={() => setMenu(false)}>
                                 <a
-                                    href="#cursos"
+                                    href={
+                                        route().current('home')
+                                            ? '#cursos'
+                                            : route('home') + '#cursos'
+                                    }
                                     className="flex items-center text-neutral-600"
                                 >
                                     <img
@@ -48,9 +52,12 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
                             </li>
                             <li onClick={() => setMenu(false)}>
                                 <a
-                                    href="#nosotros"
+                                    href={
+                                        route().current('home')
+                                            ? '#nosotros'
+                                            : route('home') + '#nosotros'
+                                    }
                                     className="flex items-center text-neutral-600"
-                                    
                                 >
                                     <img
                                         src="img/nosotros.png"
@@ -63,7 +70,11 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
                             </li>
                             <li>
                                 <a
-                                    href="#blog"
+                                    href={
+                                        route().current('home')
+                                            ? '#blog'
+                                            : route('home') + '#blog'
+                                    }
                                     className="flex items-center text-neutral-600"
                                 >
                                     <img
@@ -75,7 +86,11 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
                             </li>
                             <li onClick={() => setMenu(false)}>
                                 <a
-                                    href="#contacto"
+                                    href={
+                                        route().current('home')
+                                            ? '#contacto'
+                                            : route('home') + '#contacto'
+                                    }
                                     className="flex items-center text-neutral-600"
                                 >
                                     <img
@@ -91,7 +106,7 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
                     </div>
                     <Link
                         href={route('login')}
-                        className="rounded-lg  bg-[#0B60F7] px-3 py-2 text-sm uppercase text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] sm:inline dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                        className="rounded-lg bg-[#0B60F7] px-3 py-2 text-sm uppercase text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] sm:inline dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                     >
                         Iniciar Sesión
                     </Link>
