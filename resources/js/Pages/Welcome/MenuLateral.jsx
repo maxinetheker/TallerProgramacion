@@ -17,7 +17,7 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
             >
                 <div
                     ref={ref}
-                    className="fixed right-0 top-0 h-screen w-[80vw] bg-white p-10"
+                    className="fixed right-0 top-0 h-screen w-[80vw] bg-white p-10 z-50"
                 >
                     <div className="flex justify-between border-b-2 border-b-neutral-400 pb-4">
                         <ApplicationLogo className="w-40"></ApplicationLogo>
@@ -32,8 +32,8 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
                     </div>
                     <div className='mb-10'>
                         <ul className="mt-4 flex flex-col gap-8">
-                            <li>
-                                <Link
+                            <li onClick={() => setMenu(false)}>
+                                <a
                                     href="#cursos"
                                     className="flex items-center text-neutral-600"
                                 >
@@ -44,12 +44,13 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
                                     <span className="pl-6 text-2xl">
                                         Cursos
                                     </span>
-                                </Link>
+                                </a>
                             </li>
-                            <li>
-                                <Link
+                            <li onClick={() => setMenu(false)}>
+                                <a
                                     href="#nosotros"
                                     className="flex items-center text-neutral-600"
+                                    
                                 >
                                     <img
                                         src="img/nosotros.png"
@@ -58,11 +59,11 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
                                     <span className="pl-6 text-2xl">
                                         Nosotros
                                     </span>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link
-                                    href="#nosotros"
+                                <a
+                                    href="#blog"
                                     className="flex items-center text-neutral-600"
                                 >
                                     <img
@@ -70,11 +71,11 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
                                         className="w-10"
                                     ></img>
                                     <span className="pl-6 text-2xl">Blog</span>
-                                </Link>
+                                </a>
                             </li>
-                            <li>
-                                <Link
-                                    href="#nosotros"
+                            <li onClick={() => setMenu(false)}>
+                                <a
+                                    href="#contacto"
                                     className="flex items-center text-neutral-600"
                                 >
                                     <img
@@ -84,7 +85,7 @@ const MenuLateral = forwardRef(({ menu, setMenu }, ref) => {
                                     <span className="pl-6 text-2xl">
                                         Contacto
                                     </span>
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                     </div>

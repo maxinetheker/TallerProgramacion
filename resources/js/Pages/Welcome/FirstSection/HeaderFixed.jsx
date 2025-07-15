@@ -53,27 +53,27 @@ export default function HeaderFixed({
                     <ApplicationLogo className={'w-40'}></ApplicationLogo>
                 </Link>
                 <nav className="flex flex-1 items-center justify-evenly gap-6 sm:mr-10 sm:justify-end">
-                    <Link
+                    <a
                         className="hidden text-[#727070] hover:text-white sm:inline"
                         href={route('home') +"/#cursos"}
                     >
                         CURSOS
-                    </Link>
-                    <Link
+                    </a>
+                    <a
                         className="hidden text-[#727070] hover:text-white sm:inline"
                         href="#nosotros"
                     >
                         NOSOTROS
-                    </Link>
-                    <Link
+                    </a>
+                    <a
                         className="hidden text-[#727070] hover:text-white sm:inline"
-                        href="#"
+                        href="#blog"
                     >
                         BLOG
-                    </Link>
-                    <Link className="hidden text-[#727070] hover:text-white sm:inline">
+                    </a>
+                    <a className="hidden text-[#727070] hover:text-white sm:inline" href="#contacto">
                         CONTACTO
-                    </Link>
+                    </a>
                     {auth.user ? (
                         <Link
                             href={route('dashboard')}

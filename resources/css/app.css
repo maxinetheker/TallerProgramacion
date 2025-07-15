@@ -35,10 +35,13 @@
     animation: fade-in-left 0.8s ease-out forwards;
   }
   
-  
+  html {
+  scroll-behavior: smooth;
+}
+
   .underline-hover {
     position: relative;
-    display: inline-block;
+ 
     
     text-decoration: none;
   }
@@ -59,3 +62,8 @@
   .underline-hover:hover::after {
     transform: scaleX(1);
   }
+
+
+  .scaleGSAP {
+    transform: scale(0.8);
+  } 

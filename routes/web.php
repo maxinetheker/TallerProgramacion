@@ -42,7 +42,14 @@ Route::get('/cursos', function () {
 
 //VER CURSOS DE USUARIO
 Route::get('/mis-cursos', function () {
-    return Inertia::render('MisCursos/Main');
+    $cursos = Cursos::where('id_users', auth()->user()->id)->get();
+    return Inertia::render('MisCursos/Main', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+        'miscursos' => $cursos
+    ]);
 })->middleware(['auth', 'verified'])->name('mis-cursos');
 
 //PERFIL

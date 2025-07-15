@@ -122,27 +122,27 @@ export default function WelcomeLayout({
                                 ></ApplicationLogo>
                             </Link>
                             <nav className="-mx-3 flex flex-1 items-center justify-evenly gap-6 sm:justify-end">
-                                <Link
+                                <a
                                     className="hidden text-[#727070] hover:text-white sm:inline underline-hover"
-                                    href={route('home') + '/#cursos'}
+                                    href={'#cursos'}
                                 >
                                     CURSOS
-                                </Link>
-                                <Link
+                                </a>
+                                <a
                                     className="hidden text-[#727070] hover:text-white sm:inline underline-hover"
                                     href="#nosotros"
                                 >
                                     NOSOTROS
-                                </Link>
+                                </a>
                                 <Link
                                     className="hidden text-[#727070] hover:text-white sm:inline underline-hover"
-                                    href="#"
+                                    href="#blog"
                                 >
                                     BLOG
                                 </Link>
-                                <Link className="hidden text-[#727070] hover:text-white sm:inline underline-hover">
+                                <a className="hidden text-[#727070] hover:text-white sm:inline underline-hover" href="#contacto">
                                     CONTACTO
-                                </Link>
+                                </a>
                                 {auth.user ? (
                                     <Link
                                         href={route('dashboard')}

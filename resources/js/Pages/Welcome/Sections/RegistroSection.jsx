@@ -28,7 +28,7 @@ export default function RegistroSection({ setMostrarFormulario }) {
 
   })
   return (
-    <section  className="py-20 bg-gradient-to-b from-blue-50 to-white">
+    <section id='contacto'  className="py-20 bg-gradient-to-b from-blue-50 to-white scroll-mt-24 min-h-80">
       <div ref={registracionRef} className="container mx-auto px-6 lg:px-8">
         {/* Reemplazamos Card por un div genérico */}
         <div ref={contenidoRegistracionRef} className="overflow-hidden hidden shadow-2xl rounded-2xl bg-white">

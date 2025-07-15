@@ -1,6 +1,6 @@
 import WelcomeLayout from "@/Layouts/WelcomeLayout";
 import { Head, router } from "@inertiajs/react";
-import { Link, ShoppingBag, ShoppingBasket } from "lucide-react";
+import { CheckCheckIcon, Link, ShoppingBag, ShoppingBasket } from "lucide-react";
 import { useEffect, useState } from "react";
 
 
@@ -114,7 +114,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion, miscursos}) 
                                                 <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                                                     {curso.nivel}
                                                 </span>
-                                             { !compras.some(c => 
+                                        
+                                          {!miscursos.some(m => m.id == curso.id)  ? <> { !compras.some(c => 
                                                 c.id == curso.id) ? 
                                                 <div onClick={() => addCarrito(index)}  className="flex select-none items-center bg-[#f7620b] gap-2 rounded p-2 hover:scale-110 text-white hover:bg-red-700 cursor-pointer" title="Comprar Curso">
                                                     <ShoppingBasket
@@ -125,7 +126,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion, miscursos}) 
                                                     <ShoppingBasket
                                                      className="h-6 w-6 text-white" /> <div className="text-sm border-l-2 pl-2"> Agregado</div>  
                                                 </div>
-                                                }
+                                                }</> : <div  className="flex select-none items-center bg-[#69cf8b] text-black gap-2 rounded p-2 text-whitecursor-pointer" title="Comprar Curso">
+                                                     <div className="text-sm flex gap-2"> Comprado<CheckCheckIcon className="h-5"/> </div>  
+                                                </div> }
                                                 <a href={`/cursos/${curso.id}`} className="bg-[#0B60F7] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ">
                                                     Ver Detalles
                                                 </a>

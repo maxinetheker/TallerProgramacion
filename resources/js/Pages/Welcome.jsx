@@ -4,6 +4,8 @@ import FirstMenu from "./Welcome/FirstSection/FirstMenu";
 import CursosSection from "./Welcome/Sections/CursosSection";
 import EstadisticasSection from "./Welcome/Sections/EstadisticasSection";
 import RegistroSection from "./Welcome/Sections/RegistroSection";
+import Nosotros from "./Welcome/Sections/Nosotros";
+import BlogSection from "./Welcome/Sections/Blog";
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
@@ -14,7 +16,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 {(setMostrarFormulario) => (
                     <>
                         <CursosSection></CursosSection>
+                        <Nosotros> </Nosotros>
                         <EstadisticasSection></EstadisticasSection>
+                        <BlogSection></BlogSection>
                         <RegistroSection setMostrarFormulario={setMostrarFormulario}></RegistroSection>
                     </>)}
             </WelcomeLayout>
