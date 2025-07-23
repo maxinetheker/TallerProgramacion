@@ -29,8 +29,13 @@ Route::get('/dashboard', function () {
 
 //VER PAGINA PARA COMPRAR CURSOS
 Route::get('/cursos', function () {
+    if (!Auth::check()) {
+        /*  return redirect()->route('login'); */
+        $cursos = [];
+    } else {
+        $cursos = Cursos::where('id_users', Auth::user()->id)->get();
+    }
 
-    $cursos = Cursos::where('id_users', auth()->user()->id)->get();
     return Inertia::render('CursosPage', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),

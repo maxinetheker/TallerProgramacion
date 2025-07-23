@@ -190,7 +190,7 @@ export default function WelcomeLayout({
                                     <>
                                         <Link
                                             href={route('login')}
-                                            className="hidden rounded-2xl bg-[#0B60F7] px-3 py-2 text-sm uppercase text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] sm:inline dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                            className="hidden text-white rounded-2xl bg-[#0B60F7] px-3 py-2 text-sm uppercase text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] sm:inline dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                         >
                                             Iniciar Sesión
                                         </Link>
