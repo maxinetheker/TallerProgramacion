@@ -4,8 +4,6 @@ Bienvenido al repositorio de la página de **NexTech**, diseñada para el taller
 
 ## 📚 Índice
 
-* [Descripción](#descripción)
-* [Demostración](#demostración)
 * [Características](#características)
 * [Tecnologías](#tecnologías)
 * [Instalación](#instalación)
@@ -35,14 +33,26 @@ Bienvenido al repositorio de la página de **NexTech**, diseñada para el taller
 
 
 ## ▶️ Uso
+1) Primero Ingresa a la Carpeta donde está alojado el proyecto
 
-Para iniciar el servidor de desarrollo:
+2) Instala las dependencias Node JS:
+
+```bash
+npm install
+```
+3) Instala las dependencias de PHP con composer (Composer con PHP 8.2)
+
+```bash
+composer install
+```
+
+4) Para iniciar el servidor de desarrollo:
 
 ```bash
 composer run dev
 ```
 
-Abre tu navegador en `http://localhost:8000` y ¡comienza a explorar!
+5) Abre tu navegador en `http://localhost:8000` y ¡comienza a explorar!
 
 
 ## 🤝 Contribuciones
